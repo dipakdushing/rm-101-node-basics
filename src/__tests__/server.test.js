@@ -4,7 +4,6 @@ const fs = require("fs");
 const users = require("../assets/user.json");
 
 describe("Testing routing Application", () => {
-  
   beforeAll((done) => {
     global.score = 0;
     done();
@@ -22,17 +21,16 @@ describe("Testing routing Application", () => {
       });
     global.score += 2;
   });
-  
   test("GET /users", () => {
     supertest(app)
       .get("/users")
       .expect(200)
       .then((response) => {
-        
+        // Check type and length
         expect(Array.isArray(response.body)).toBeTruthy();
         expect(response.body.length).toEqual(99);
       });
-    global.score = score + 2;
+    global.score += 2;
   });
 
   test("GET /users/1", () => {
@@ -40,12 +38,11 @@ describe("Testing routing Application", () => {
       .get("/users/1")
       .expect(200)
       .then((response) => {
-        
+        // Check type and length
         expect(response.body).toEqual(users[0]);
       });
     global.score += 2;
   });
-  
   afterAll((done) => {
     console.log("Final Score is", global.score);
     done();
