@@ -5,11 +5,6 @@ const express = require('express');
 let app = express();
 app.use(cors());
 
-// const express = () => {};
-
-
-
-
 
 app.get('/', function(req, res) {
     fs.readFile(__dirname + '/assets/users.html', 'utf8', function(err, text){
@@ -43,7 +38,7 @@ app.post('/users', (req, res) => {
         // Checking for errors
         if (err) throw err; 
        
-        console.log("Done writing");
+        console.log("Done");
     }); 
 });    
 // Code here
